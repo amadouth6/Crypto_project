@@ -1,0 +1,9 @@
+- name: Exécuter le script Python de manière synchrone
+  hosts: all
+  become: true
+  tasks:
+    - name: Exécuter le script Python de manière synchrone
+      # command: python3.7 /vagrant/udp.py
+      command: hping3 -c 15000 -d 120 -S -w 64 -p 80 --flood --rand-source 192.168.1.253
+      async: 120
+      poll: 0 
